@@ -26,7 +26,9 @@ export class GamesRepository implements IGamesRepository {
     `); // Complete usando raw query
   }
 
-  async findUsersByGameId(id: string): Promise<User[] | undefined | Game[]> {
+  async findUsersByGameId(id: string): Promise<User[]> {
+
+    //FOI NECESSARIO MUDAR O REPOSITORY PARA PEGAR A RELATION
     return await getRepository(User)
     .createQueryBuilder('user')
     .leftJoinAndSelect('user.games', 'game')
